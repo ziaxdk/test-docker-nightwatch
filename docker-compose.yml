@@ -1,0 +1,79 @@
+# To execute this docker-compose yml file use docker-compose -f <file_name> up
+# Add the "-d" flag at the end for deattached execution
+version: '2'
+services:
+  # firefox:
+  #   image: selenium/node-firefox-debug
+  #   volumes:
+  #     - /dev/shm:/dev/shm
+  #   depends_on:
+  #     - hub
+  #   environment:
+  #     HUB_HOST: hub
+  #   ports:
+  #     - "5901:5900"
+
+  chrome1:
+    image: selenium/node-chrome-debug
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - hub
+    environment:
+      HUB_HOST: hub
+    ports:
+      - "5900:5900"
+  # chrome2:
+  #   image: selenium/node-chrome-debug
+  #   volumes:
+  #     - /dev/shm:/dev/shm
+  #   depends_on:
+  #     - hub
+  #   environment:
+  #     HUB_HOST: hub
+  #   ports:
+  #     - "5901:5900"
+  # chrome3:
+  #   image: selenium/node-chrome-debug
+  #   volumes:
+  #     - /dev/shm:/dev/shm
+  #   depends_on:
+  #     - hub
+  #   environment:
+  #     HUB_HOST: hub
+  #   ports:
+  #     - "5902:5900"
+  # chrome4:
+  #   image: selenium/node-chrome-debug
+  #   volumes:
+  #     - /dev/shm:/dev/shm
+  #   depends_on:
+  #     - hub
+  #   environment:
+  #     HUB_HOST: hub
+  #   ports:
+  #     - "5903:5900"
+
+  hub:
+    image: selenium/hub
+    ports:
+      - "4444:4444"
+
+
+# $ docker network create grid
+# $ docker network rm grid
+
+# $ docker run -d -p 4444:4444 --net grid --name sel-hub selenium/hub
+# $ docker run -d --net grid -e HUB_HOST=sel-hub --shm-size=2g -p 5900:5900 --name sel-ch selenium/node-chrome-debug
+# $ docker run -d --net grid -e HUB_HOST=sel-hub --shm-size=2g -p 5901:5900 --name sel-ff selenium/node-firefox-debug
+
+
+# $ docker run -d -p 4444:4444 -p 5900:5900 --shm-size=2g --name sel-ch selenium/standalone-chrome-debug
+# $ docker run -d -p 4444:4444 -p 5901:5900 --shm-size=2g --name sel-ff selenium/standalone-firefox-debug
+
+
+# $ node nightwatch.js --env ch -c ./config/nightwatch.docker.conf.js --tag codes
+# $ node nightwatch.js --env ff -c ./config/nightwatch.docker.conf.js --tag codes
+
+# SET SEABOOKWEB_URL=http://localhost:9020  -> Remember to: gulp watch:all
+# SET SBW_E2E_OFFSET=60

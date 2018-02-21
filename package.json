@@ -1,0 +1,16 @@
+{
+  "name": "test-docker-nightwatch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nightwatch --verbose",
+    "test:2": "nightwatch --env chrome"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nightwatch": "^0.9.19"
+  }
+}

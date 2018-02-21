@@ -1,0 +1,17 @@
+.DS_Store
+node_modules/
+dist_server/
+dist_all/
+dist_docker/frontend/www/
+dist_docker/backend/code/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.env
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
